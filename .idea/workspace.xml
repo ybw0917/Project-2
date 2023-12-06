@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b50c795d-1e58-4882-a48d-6987d47646d4" name="更改" comment="" />
+=======
+    <list default="true" id="d6e13ec9-cf94-4365-a084-959418122b61" name="更改" comment="" />
+>>>>>>> Bowang
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -14,6 +19,18 @@
   "associatedIndex": 6
 }]]></component>
   <component name="ProjectId" id="2ZBVHaA9FjtdxtZWp6zWtturRg9" />
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2ZBVhVzuMRfSZnJc6RlL9xEkRQf" />
+>>>>>>> Bowang
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,17 +38,30 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+<<<<<<< HEAD
     "RunOnceActivity.ShowReadmeOnStart": "true"
+=======
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Bowang"
+>>>>>>> Bowang
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
+<<<<<<< HEAD
       <changelist id="b50c795d-1e58-4882-a48d-6987d47646d4" name="更改" comment="" />
       <created>1701895372318</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701895372318</updated>
+=======
+      <changelist id="d6e13ec9-cf94-4365-a084-959418122b61" name="更改" comment="" />
+      <created>1701895578411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701895578411</updated>
+>>>>>>> Bowang
     </task>
     <servers />
   </component>
