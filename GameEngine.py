@@ -114,3 +114,58 @@ class GameEngine:
                     print(f"\033[32m{self.__field[i][j]}\033[0m", end=" ")
             print("#")
         print(border)
+
+    def getScore(self):
+        return self.__score
+
+    def moveRabbits(self):
+        for rabbit in self.__rabbit_list:
+            flag = 0
+            direction = random.randint(0, 1)        # 0: horizontal, 1:vertical
+            distance = random.randint(-1, 1)        # -1: left or up, 0:no movement, 1: right or down
+            if direction == 0:          # move horizontally
+                if distance == 0:
+                    continue
+                else:
+                    newX = rabbit.getX() + distance
+                    if newX < 0 or newX >= len(self.__field[0]):    # rabbit tries to cross left or right border
+                        flag = 1
+                    for i in self.__rabbit_list:
+                        if i.getX() == newX and i.getY() == rabbit.getY():    # rabbit tries to step on other rabbits
+                            flag = 1
+                            break
+                        elif newX == self.__cpt.getX() and rabbit.getY() == self.__cpt.getY():
+                            # rabbit tries to step on Captain
+                            flag = 1
+                            break
+                        elif newX == self.__snake.getX() and rabbit.getY() == self.__snake.getY():
+                            # rabbit tries to step on Snake
+                            flag = 1
+                            break
+                    if flag == 0:
+                        self.__field[rabbit.getY()][rabbit.getX()] = None
+                        rabbit.setX(newX)
+            if direction == 1:          # move vertically
+                if distance == 0:
+                    continue
+                else:
+                    newY = rabbit.getY()+distance
+                    if newY < 0 or newY >= len(self.__field):   # rabbit tries to cross up or down border
+                        flag = 1
+                    for i in self.__rabbit_list:
+                        if i.getY() == newY and i.getX() == rabbit.getX():    # rabbit tries to step on other rabbits
+                            flag = 1
+                            break
+                        elif newY == self.__cpt.getY() and rabbit.getX() == self.__cpt.getX():
+                            # rabbit tries to step on Captain
+                            flag = 1
+                            break
+                        elif newY == self.__snake.getY() and rabbit.getX() == self.__snake.getX():
+                            # rabbit tries to step on Snake
+                            flag = 1
+                            break
+                    if flag == 0:
+                        self.__field[rabbit.getY()][rabbit.getX()] = None
+                        rabbit.setY(newY)
+        for rabbit in self.__rabbit_list:
+            self.__field[rabbit.getY()][rabbit.getX()] = "R"
