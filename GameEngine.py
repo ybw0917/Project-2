@@ -261,4 +261,51 @@ class GameEngine:
         self.moveRabbits()
         self.moveSnake()
 
+    def gameOver(self):
+        if self.remainingVeggies() == 0:
+            print("Game over!")
+            print("You managed to harvest the following vegetables:")
+            for i in self.__cpt.getV():
+                print(i.getName())
+            print(f"Your score was: {self.getScore()}")
+
+    def highScore(self):
+        if not os.path.exists(self.__HIGHSCOREFILE):
+            with open(self.__HIGHSCOREFILE, "wb") as file:
+                initial = input("Please enter your three initials to go on the scoreboard: ")
+                high_score = (initial, self.__score)
+                high_score_list = [high_score]
+                pickle.dump(high_score_list, file)
+        else:
+            with open(self.__HIGHSCOREFILE, "rb") as file:
+                high_score_list = pickle.load(file)
+            initial = input("Please enter your three initials to go on the scoreboard: ")
+            high_score = (initial, self.__score)
+            for i in range(len(high_score_list)):
+                if high_score[1] > high_score_list[i][1]:
+                    high_score_list.insert(i, high_score)
+            with open(self.__HIGHSCOREFILE, "wb") as file:
+                pickle.dump(high_score_list, file)
+        print("HIGH SCORES")
+        print("Name\tScore")
+        for i in range(len(high_score_list)):
+            print(f"{high_score_list[i][0]}\t\t{high_score_list[i][1]}")
+
+
+def main():
+    x = GameEngine()
+    x.initializeGame()
+    x.intro()
+    print(f"{x.remainingVeggies()} veggies remaining. Current score: {x.getScore()}")
+    x.printField()
+    while x.remainingVeggies() != 0:
+        x.moveCaptain()
+        print(f"{x.remainingVeggies()} veggies remaining. Current score: {x.getScore()}")
+        x.printField()
+    x.gameOver()
+    x.highScore()
+
+
+main()
+
 
