@@ -70,3 +70,26 @@ class GameEngine:
         self.initCaptain()
         self.initRabbit()
 
+    def remainingVeggies(self):
+        count = 0
+        for i in range(len(self.__field)):
+            for j in range(len(self.__field[i])):
+                if self.__field[i][j] is not None and self.__field[i][j] != "V" and self.__field[i][j] != "R":
+                    if self.__field[i][j] != "S":
+                        count += 1
+        return count
+
+    def intro(self):
+        print("Welcome to Captain Veggie!")
+        print("The rabbits have invaded your garden and you must harvest")
+        print("as many vegetables as possible before the rabbits eat them")
+        print("all! Each vegetable is worth a different number of points")
+        print("so go for the high score!")
+        print()
+        print("The vegetables are:")
+        for obj in self.__veggie_list:
+            print(obj)
+        print()
+        print("Captain Veggie is V, Rabbits are R's, Snake is S.")
+        print()
+        print("Good luck!")
