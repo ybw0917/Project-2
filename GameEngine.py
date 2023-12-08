@@ -13,15 +13,15 @@ import random
 
 class GameEngine:
     def __init__(self):
-        self.__NUMBEROFVEGGIES = 30    # Number of veggies.
-        self.__NUMBEROFRABBITS = 5    # Number of rabbits.
+        self.__NUMBEROFVEGGIES = 30
+        self.__NUMBEROFRABBITS = 5
         self.__HIGHSCOREFILE = "highscore.data"
-        self.__score = 0    # Points the player has got.
+        self.__score = 0
         self.__cpt = None
         self.__snake = None
         self.__field = []
-        self.__rabbit_list = [] # List stores all the rabbit objects.
-        self.__veggie_list = [] # List stores all the veggie objects. 
+        self.__rabbit_list = []
+        self.__veggie_list = []
 
     def initVeggies(self):
         filename = input("Please enter the name of the vegetable point file: ")
@@ -47,7 +47,9 @@ class GameEngine:
                 y = random.randrange(0, len(self.__field))
                 x = random.randrange(0, len(self.__field[1]))
             type1 = random.randrange(len(self.__veggie_list))
-            self.__field[y][x] = self.__veggie_list[type1].getSymbol()  # Fill the fields with Symbols
+            self.__field[y][x] = self.__veggie_list[type1].getSymbol()
+        # for col in self.__field:
+        #     print(col)
 
     def initCaptain(self):
         y = random.randrange(0, len(self.__field))
@@ -57,7 +59,8 @@ class GameEngine:
             x = random.randrange(0, len(self.__field[1]))
         self.__cpt = Captain(x, y)
         self.__field[y][x] = "V"
-      
+        # for col in self.__field:
+        #     print(col)
 
     def initRabbit(self):
         for i in range(self.__NUMBEROFRABBITS):
@@ -69,7 +72,9 @@ class GameEngine:
             rabbit = Rabbit(x, y)
             self.__rabbit_list.append(rabbit)
             self.__field[y][x] = "R"
-            
+        # for col in self.__field:
+        #     print(col)
+
     def initSnake(self):
         y = random.randrange(0, len(self.__field))
         x = random.randrange(0, len(self.__field[1]))
@@ -91,7 +96,6 @@ class GameEngine:
             for j in range(len(self.__field[i])):
                 if self.__field[i][j] is not None and self.__field[i][j] != "V" and self.__field[i][j] != "R":
                     if self.__field[i][j] != "S":
-                        # Make sure the counter only counts vegetables remain.
                         count += 1
         return count
 
@@ -119,15 +123,15 @@ class GameEngine:
             print("#", end=" ")
             for j in range(len(self.__field[i])):
                 if self.__field[i][j] == "V":
-                    print(f"\033[34m{self.__field[i][j]}\033[0m", end=" ")  # Print Captain in blue color.
+                    print(f"\033[34m{self.__field[i][j]}\033[0m", end=" ")
                 elif self.__field[i][j] == "R":
-                    print(f"\033[31m{self.__field[i][j]}\033[0m", end=" ")  # Print Rabbits in red color.
+                    print(f"\033[31m{self.__field[i][j]}\033[0m", end=" ")
                 elif self.__field[i][j] == "S":
-                    print(f"\033[33m{self.__field[i][j]}\033[0m", end=" ")  # Print Snake in yellow color.
+                    print(f"\033[33m{self.__field[i][j]}\033[0m", end=" ")
                 elif self.__field[i][j] is None:
                     print(" ", end=" ")
                 else:
-                    print(f"\033[32m{self.__field[i][j]}\033[0m", end=" ")  # Print Veggies in green color.
+                    print(f"\033[32m{self.__field[i][j]}\033[0m", end=" ")
             print("#")
         print(border)
 
@@ -136,7 +140,7 @@ class GameEngine:
 
     def moveRabbits(self):
         for rabbit in self.__rabbit_list:
-            flag = 0    # Show if the object can move normally.
+            flag = 0
             direction = random.randint(0, 1)        # 0: horizontal, 1:vertical
             distance = random.randint(-1, 1)        # -1: left or up, 0:no movement, 1: right or down
             if direction == 0:          # move horizontally
@@ -184,12 +188,12 @@ class GameEngine:
                         self.__field[rabbit.getY()][rabbit.getX()] = None
                         rabbit.setY(newY)
         for rabbit in self.__rabbit_list:
-            self.__field[rabbit.getY()][rabbit.getX()] = "R"    # Fill the fields with rabbits.
+            self.__field[rabbit.getY()][rabbit.getX()] = "R"
 
     def moveCptVertical(self, ver_val):
-        flag = 0    # Show if the object can move normally.
+        flag = 0
         newY = self.__cpt.getY() + ver_val
-        if newY < 0 or newY >= len(self.__field):   # Tries to go out of the boundaries.
+        if newY < 0 or newY >= len(self.__field):
             print("You can't go that way!")
             flag = 1
         elif self.__field[newY][self.__cpt.getX()] == "R":          # Avoid stepping on rabbits
@@ -227,7 +231,7 @@ class GameEngine:
     def moveCptHorizontal(self, hor_val):
         flag = 0
         newX = self.__cpt.getX() + hor_val
-        if newX < 0 or newX >= len(self.__field[0]):    # Tries to go out of the boundaries.
+        if newX < 0 or newX >= len(self.__field[0]):
             print("You can't go that way!")
             flag = 1
         elif self.__field[self.__cpt.getY()][newX] == "R":
@@ -261,7 +265,7 @@ class GameEngine:
                     self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
         if flag == 0:
             self.__cpt.setX(newX)
-    
+
     def moveCaptain(self):
         movement = input("Would you like to move up(W), down(S), left(A), or right(D):")
         if movement == "W" or movement == "w":
@@ -307,7 +311,7 @@ class GameEngine:
             if self.__field[self.__snake.getY()][newX] != "V":
                 if self.__field[self.__snake.getY()][newX] is not None:
                     flag = 1
-            else:
+            elif self.__field[self.__snake.getY()][newX] == "V":
                 if len(self.__cpt.getV()) >= 5:
                     for i in range(-5, 0):
                         self.__score -= self.__cpt.getV()[i].getValue()
@@ -375,7 +379,6 @@ class GameEngine:
                     self.__snake.setY(newY)
                     self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
 
-
     def gameOver(self):
         if self.remainingVeggies() == 0:
             print("Game over!")
@@ -405,7 +408,3 @@ class GameEngine:
         print("Name\tScore")
         for i in range(len(high_score_list)):
             print(f"{high_score_list[i][0]}\t\t{high_score_list[i][1]}")
-
-
-
-
