@@ -208,3 +208,57 @@ class GameEngine:
         if flag == 0:
             self.__cpt.setY(newY)
 
+    def moveCptHorizontal(self, hor_val):
+        flag = 0
+        newX = self.__cpt.getX() + hor_val
+        if newX < 0 or newX >= len(self.__field[0]):
+            print("You can't go that way!")
+            flag = 1
+        elif self.__field[self.__cpt.getY()][newX] == "R":
+            print("Don't step on the bunnies!")
+            flag = 1
+        elif self.__field[self.__cpt.getY()][newX] == "S":  # Stepping on Snake will lose points
+            if len(self.__cpt.getV()) >= 5:
+                for i in range(-5, 0):
+                    self.__score -= self.__cpt.getV()[i].getValue()
+                for i in range(5):
+                    self.__cpt.getV().pop(-1)
+            else:
+                for i in range(-len(self.__cpt.getV()), 0):
+                    self.__score -= self.__cpt.getV()[i].getValue()
+                for i in range(len(self.__cpt.getV())):
+                    self.__cpt.getV().pop(-1)
+            print("Ops, Captain was caught by the Snake!")
+            self.initSnake()
+            self.__field[self.__cpt.getX()][newX] = "V"
+            self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        elif self.__field[self.__cpt.getY()][newX] is None:
+            self.__field[self.__cpt.getY()][newX] = "V"
+            self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        else:
+            for veggie in self.__veggie_list:
+                if self.__field[self.__cpt.getY()][newX] == veggie.getSymbol():
+                    print(f"Yummy! A delicious {veggie.getName()}")
+                    self.__cpt.addVeggie(veggie)
+                    self.__score += veggie.getValue()
+                    self.__field[self.__cpt.getY()][newX] = "V"
+                    self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        if flag == 0:
+            self.__cpt.setX(newX)
+
+    def moveCaptain(self):
+        movement = input("Would you like to move up(W), down(S), left(A), or right(D):")
+        if movement == "W" or movement == "w":
+            self.moveCptVertical(-1)
+        elif movement == "S" or movement == "s":
+            self.moveCptVertical(1)
+        elif movement == "A" or movement == "a":
+            self.moveCptHorizontal(-1)
+        elif movement == "D" or movement == "d":
+            self.moveCptHorizontal(1)
+        else:
+            print(f"{movement} is not a valid option")
+        self.moveRabbits()
+        self.moveSnake()
+
+
