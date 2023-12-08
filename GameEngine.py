@@ -43,3 +43,25 @@ class GameEngine:
                 x = random.randrange(0, len(self.__field[1]))
             type1 = random.randrange(len(self.__veggie_list))
             self.__field[y][x] = self.__veggie_list[type1].getSymbol()
+
+    def initCaptain(self):
+        y = random.randrange(0, len(self.__field))
+        x = random.randrange(0, len(self.__field[1]))
+        while self.__field[y][x] is not None:  # make sure the chosen location is not occupied.
+            y = random.randrange(0, len(self.__field))
+            x = random.randrange(0, len(self.__field[1]))
+        self.__cpt = Captain(x, y)
+        self.__field[y][x] = "V"
+      
+
+    def initRabbit(self):
+        for i in range(self.__NUMBEROFRABBITS):
+            y = random.randrange(0, len(self.__field))
+            x = random.randrange(0, len(self.__field[1]))
+            while self.__field[y][x] is not None:       # make sure the chosen location is not occupied.
+                y = random.randrange(0, len(self.__field))
+                x = random.randrange(0, len(self.__field[1]))
+            rabbit = Rabbit(x, y)
+            self.__rabbit_list.append(rabbit)
+            self.__field[y][x] = "R"
+   
