@@ -402,6 +402,8 @@ class GameEngine:
             for i in range(len(high_score_list)):
                 if high_score[1] > high_score_list[i][1]:
                     high_score_list.insert(i, high_score)
+                else:
+                    high_score_list.append(high_score)
             with open(self.__HIGHSCOREFILE, "wb") as file:
                 pickle.dump(high_score_list, file)
         print("HIGH SCORES")
