@@ -64,11 +64,15 @@ class GameEngine:
             rabbit = Rabbit(x, y)
             self.__rabbit_list.append(rabbit)
             self.__field[y][x] = "R"
+            
+    def initSnake(self):
+        pass
 
     def initializeGame(self):
         self.initVeggies()
         self.initCaptain()
         self.initRabbit()
+        self.initSnake()
 
     def remainingVeggies(self):
         count = 0
