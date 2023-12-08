@@ -1,3 +1,7 @@
+# Author: Bowang Yan, Yu Zhuang, Shengwei Duan
+# Date: 12/07/2023
+# Description:  Class File for FieldInhabitant.
+
 class FieldInhabitant:
     def __init__(self, symbol):
         self._symbol = symbol
