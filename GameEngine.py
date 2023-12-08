@@ -5,6 +5,7 @@
 from Veggie import Veggie
 from Captain import Captain
 from Rabbit import Rabbit
+from Snake import Snake
 import pickle
 import os
 import random
