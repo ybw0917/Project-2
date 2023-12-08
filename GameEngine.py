@@ -169,3 +169,42 @@ class GameEngine:
                         rabbit.setY(newY)
         for rabbit in self.__rabbit_list:
             self.__field[rabbit.getY()][rabbit.getX()] = "R"
+
+    def moveCptVertical(self, ver_val):
+        flag = 0
+        newY = self.__cpt.getY() + ver_val
+        if newY < 0 or newY >= len(self.__field):
+            print("You can't go that way!")
+            flag = 1
+        elif self.__field[newY][self.__cpt.getX()] == "R":          # Avoid stepping on rabbits
+            flag = 1
+            print("Don't step on the bunnies!")
+        elif self.__field[newY][self.__cpt.getX()] == "S":          # Stepping on Snake will lose points
+            if len(self.__cpt.getV()) >= 5:
+                for i in range(-5, 0):
+                    self.__score -= self.__cpt.getV()[i].getValue()
+                for i in range(5):
+                    self.__cpt.getV().pop(-1)
+            else:
+                for i in range(-len(self.__cpt.getV()), 0):
+                    self.__score -= self.__cpt.getV()[i].getValue()
+                for i in range(len(self.__cpt.getV())):
+                    self.__cpt.getV().pop(-1)
+            print("Ops, Captain was caught by the Snake!")
+            self.initSnake()
+            self.__field[newY][self.__cpt.getX()] = "V"
+            self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        elif self.__field[newY][self.__cpt.getX()] is None:
+            self.__field[newY][self.__cpt.getX()] = "V"
+            self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        else:
+            for veggie in self.__veggie_list:
+                if self.__field[newY][self.__cpt.getX()] == veggie.getSymbol():
+                    print(f"Yummy! A delicious {veggie.getName()}")
+                    self.__cpt.addVeggie(veggie)
+                    self.__score += veggie.getValue()
+                    self.__field[newY][self.__cpt.getX()] = "V"
+                    self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
+        if flag == 0:
+            self.__cpt.setY(newY)
+
