@@ -93,3 +93,24 @@ class GameEngine:
         print("Captain Veggie is V, Rabbits are R's, Snake is S.")
         print()
         print("Good luck!")
+
+    def printField(self):
+        border = ""
+        for i in range(len(self.__field[1])+2):
+            border += "# "
+        print(border)
+        for i in range(len(self.__field)):
+            print("#", end=" ")
+            for j in range(len(self.__field[i])):
+                if self.__field[i][j] == "V":
+                    print(f"\033[34m{self.__field[i][j]}\033[0m", end=" ")
+                elif self.__field[i][j] == "R":
+                    print(f"\033[31m{self.__field[i][j]}\033[0m", end=" ")
+                elif self.__field[i][j] == "S":
+                    print(f"\033[33m{self.__field[i][j]}\033[0m", end=" ")
+                elif self.__field[i][j] is None:
+                    print(" ", end=" ")
+                else:
+                    print(f"\033[32m{self.__field[i][j]}\033[0m", end=" ")
+            print("#")
+        print(border)
