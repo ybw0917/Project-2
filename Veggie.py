@@ -24,5 +24,5 @@ class Veggie(FieldInhabitant):
         self.__name = newName
 
     def __str__(self):
-        return f"{self.getSymbol()}: {self.getName()}   ,{self.getValue()} points"
+        return f"{self.getSymbol()}: {self.getName()} {self.getValue()} points"
 
