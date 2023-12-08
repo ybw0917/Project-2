@@ -245,7 +245,7 @@ class GameEngine:
                     self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
         if flag == 0:
             self.__cpt.setX(newX)
-
+    
     def moveCaptain(self):
         movement = input("Would you like to move up(W), down(S), left(A), or right(D):")
         if movement == "W" or movement == "w":
@@ -260,6 +260,9 @@ class GameEngine:
             print(f"{movement} is not a valid option")
         self.moveRabbits()
         self.moveSnake()
+
+    def moveSnake(self):
+        pass
 
     def gameOver(self):
         if self.remainingVeggies() == 0:
