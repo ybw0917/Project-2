@@ -70,7 +70,13 @@ class GameEngine:
             self.__field[y][x] = "R"
             
     def initSnake(self):
-        pass
+        y = random.randrange(0, len(self.__field))
+        x = random.randrange(0, len(self.__field[1]))
+        while self.__field[y][x] is not None:  # make sure the chosen location is not occupied.
+            y = random.randrange(0, len(self.__field))
+            x = random.randrange(0, len(self.__field[1]))
+        self.__snake = Snake(x, y)
+        self.__field[y][x] = "S"
 
     def initializeGame(self):
         self.initVeggies()
