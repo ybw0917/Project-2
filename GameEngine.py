@@ -64,4 +64,9 @@ class GameEngine:
             rabbit = Rabbit(x, y)
             self.__rabbit_list.append(rabbit)
             self.__field[y][x] = "R"
-   
+
+    def initializeGame(self):
+        self.initVeggies()
+        self.initCaptain()
+        self.initRabbit()
+
