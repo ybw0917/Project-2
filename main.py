@@ -1,3 +1,7 @@
+# Author: Bowang Yan, Yu Zhuang, Shengwei Duan
+# Date: 12/07/2023
+# Description:  Main function.
+
 from GameEngine import GameEngine
 
 
