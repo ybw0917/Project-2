@@ -304,20 +304,5 @@ class GameEngine:
             print(f"{high_score_list[i][0]}\t\t{high_score_list[i][1]}")
 
 
-def main():
-    x = GameEngine()
-    x.initializeGame()
-    x.intro()
-    print(f"{x.remainingVeggies()} veggies remaining. Current score: {x.getScore()}")
-    x.printField()
-    while x.remainingVeggies() != 0:
-        x.moveCaptain()
-        print(f"{x.remainingVeggies()} veggies remaining. Current score: {x.getScore()}")
-        x.printField()
-    x.gameOver()
-    x.highScore()
-
-
-main()
 
 
