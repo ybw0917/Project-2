@@ -271,7 +271,103 @@ class GameEngine:
         self.moveSnake()
 
     def moveSnake(self):
-        pass
+        flag = 0
+        if self.__snake.getX() > self.__cpt.getX():
+            newX = self.__snake.getX()-1
+            if self.__field[self.__snake.getY()][newX] != "V":
+                if self.__field[self.__snake.getY()][newX] is not None:
+                    flag = 1
+            else:
+                if len(self.__cpt.getV()) >= 5:
+                    for i in range(-5, 0):
+                        self.__score -= self.__cpt.getV()[i].getValue()
+                    for i in range(5):
+                        self.__cpt.getV().pop(-1)
+                else:
+                    for i in range(-len(self.__cpt.getV()), 0):
+                        self.__score -= self.__cpt.getV()[i].getValue()
+                    for i in range(len(self.__cpt.getV())):
+                        self.__cpt.getV().pop(-1)
+                self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                print("Ops, Captain was caught by the Snake!")
+                self.initSnake()
+            if flag == 0:
+                self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                self.__snake.setX(newX)
+                self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
+        elif self.__snake.getX() < self.__cpt.getX():
+            newX = self.__snake.getX()+1
+            if self.__field[self.__snake.getY()][newX] != "V":
+                if self.__field[self.__snake.getY()][newX] is not None:
+                    flag = 1
+            else:
+                if len(self.__cpt.getV()) >= 5:
+                    for i in range(-5, 0):
+                        self.__score -= self.__cpt.getV()[i].getValue()
+                    for i in range(5):
+                        self.__cpt.getV().pop(-1)
+                else:
+                    for i in range(-len(self.__cpt.getV()), 0):
+                        self.__score -= self.__cpt.getV()[i].getValue()
+                    for i in range(len(self.__cpt.getV())):
+                        self.__cpt.getV().pop(-1)
+                self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                print("Ops, Captain was caught by the Snake!")
+                self.initSnake()
+            if flag == 0:
+                self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                self.__snake.setX(newX)
+                self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
+        else:
+            if self.__snake.getY() > self.__cpt.getY():
+                newY = self.__snake.getY()-1
+                if self.__field[newY][self.__snake.getX()] != "V":
+                    if self.__field[newY][self.__snake.getX()] is not None:
+                        flag = 1
+                else:
+                    flag = 1
+                    if len(self.__cpt.getV()) >= 5:
+                        for i in range(-5, 0):
+                            self.__score -= self.__cpt.getV()[i].getValue()
+                        for i in range(5):
+                            self.__cpt.getV().pop(-1)
+                    else:
+                        for i in range(-len(self.__cpt.getV()), 0):
+                            self.__score -= self.__cpt.getV()[i].getValue()
+                        for i in range(len(self.__cpt.getV())):
+                            self.__cpt.getV().pop(-1)
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                    print("Ops, Captain was caught by the Snake!")
+                    self.initSnake()
+                if flag == 0:
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                    self.__snake.setY(newY)
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
+            elif self.__snake.getY() < self.__cpt.getY():
+                newY = self.__snake.getY()+1
+                if self.__field[newY][self.__snake.getX()] != "V":
+                    if self.__field[newY][self.__snake.getX()] is not None:
+                        flag = 1
+                else:
+                    flag = 1
+                    if len(self.__cpt.getV()) >= 5:
+                        for i in range(-5, 0):
+                            self.__score -= self.__cpt.getV()[i].getValue()
+                        for i in range(5):
+                            self.__cpt.getV().pop(-1)
+                    else:
+                        for i in range(-len(self.__cpt.getV()), 0):
+                            self.__score -= self.__cpt.getV()[i].getValue()
+                        for i in range(len(self.__cpt.getV())):
+                            self.__cpt.getV().pop(-1)
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                    print("Ops, Captain was caught by the Snake!")
+                    self.initSnake()
+                if flag == 0:
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = None
+                    self.__snake.setY(newY)
+                    self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
+
 
     def gameOver(self):
         if self.remainingVeggies() == 0:
