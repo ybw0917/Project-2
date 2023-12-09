@@ -2,4 +2,6 @@
 
 Team: Best Team Ever 
 
-Team members: Bowang Yan; ShengweiDuan Yu Zhuang
+Team members: Bowang Yan
+              Shengwei Duan
+              Yu Zhuang
