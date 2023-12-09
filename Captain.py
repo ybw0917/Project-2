@@ -13,6 +13,7 @@ class Captain(Creature):
 #         Creature.__init__(self, symbol, x, y)
         self.__V = []
 
+# Get and set steps
     def getV(self):
         return self.__V
 
