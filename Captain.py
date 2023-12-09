@@ -7,7 +7,7 @@ from Creature import Creature
 
 class Captain(Creature):
     def __init__(self, x, y, symbol="V"):
-        Creature.__init__(self, symbol, x, y)
+        Creature.__init__(self, x, y, symbol)
 # class Captain(Creature):
 #     def __int__(self, x, y, symbol="C"):
 #         Creature.__init__(self, symbol, x, y)
