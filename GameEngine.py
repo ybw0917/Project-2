@@ -300,7 +300,7 @@ class GameEngine:
     def moveSnake(self):
         # Move function of Snake
         flag = 0
-        flag1 = 1
+        flag1 = 0
         if self.__snake.getX() > self.__cpt.getX():
             # The horizontal left movement of the snake
             newX = self.__snake.getX()-1
