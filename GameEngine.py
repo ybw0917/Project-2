@@ -250,7 +250,7 @@ class GameEngine:
                     self.__cpt.getV().pop(-1)
             print("Ops, Captain was caught by the Snake!")
             self.initSnake()
-            self.__field[self.__cpt.getX()][newX] = "V"
+            self.__field[self.__cpt.getY()][newX] = "V"
             self.__field[self.__cpt.getY()][self.__cpt.getX()] = None
         elif self.__field[self.__cpt.getY()][newX] is None:
             self.__field[self.__cpt.getY()][newX] = "V"
@@ -402,8 +402,10 @@ class GameEngine:
             for i in range(len(high_score_list)):
                 if high_score[1] > high_score_list[i][1]:
                     high_score_list.insert(i, high_score)
+                    break
                 else:
                     high_score_list.append(high_score)
+                    break
             with open(self.__HIGHSCOREFILE, "wb") as file:
                 pickle.dump(high_score_list, file)
         print("HIGH SCORES")
