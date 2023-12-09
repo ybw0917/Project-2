@@ -307,6 +307,7 @@ class GameEngine:
                 if self.__field[self.__snake.getY()][newX] is not None:
                     flag = 1
             else:
+                flag = 1
                 if len(self.__cpt.getV()) >= 5:
                     for i in range(-5, 0):
                         self.__score -= self.__cpt.getV()[i].getValue()
@@ -332,6 +333,7 @@ class GameEngine:
                 if self.__field[self.__snake.getY()][newX] is not None:
                     flag = 1
             elif self.__field[self.__snake.getY()][newX] == "V":
+                flag = 1
                 if len(self.__cpt.getV()) >= 5:
                     for i in range(-5, 0):
                         self.__score -= self.__cpt.getV()[i].getValue()
