@@ -11,6 +11,7 @@ class Veggie(FieldInhabitant):
         self.__name = name
         self.__value = value
 
+    # Getter and setter functions
     def getValue(self):
         return self.__value
 

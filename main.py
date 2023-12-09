@@ -6,6 +6,7 @@ from GameEngine import GameEngine
 
 
 def main():
+    # Call functions
     x = GameEngine()
     x.initializeGame()
     x.intro()
