@@ -9,6 +9,7 @@ class FieldInhabitant:
     def __int__(self, symbol):
         self._symbol = symbol
 
+    # Getter and setter functions
     def getSymbol(self):
         return self._symbol
 

@@ -8,12 +8,9 @@ from Creature import Creature
 class Captain(Creature):
     def __init__(self, x, y, symbol="V"):
         Creature.__init__(self, x, y, symbol)
-# class Captain(Creature):
-#     def __int__(self, x, y, symbol="C"):
-#         Creature.__init__(self, symbol, x, y)
         self.__V = []
 
-# Get and set steps
+    # Getter and setter functions
     def getV(self):
         return self.__V
 

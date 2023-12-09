@@ -11,6 +11,7 @@ class Creature(FieldInhabitant):
         self._x = x
         self._y = y
 
+    # Getter and setter functions
     def getX(self):
         return self._x
 
