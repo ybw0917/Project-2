@@ -300,7 +300,6 @@ class GameEngine:
     def moveSnake(self):
         # Move function of Snake
         flag = 0
-        flag1 = 0
         if self.__snake.getX() > self.__cpt.getX():
             # The horizontal left movement of the snake
             newX = self.__snake.getX()-1
@@ -320,12 +319,10 @@ class GameEngine:
                         self.__cpt.getV().pop(-1)
                 self.__field[self.__snake.getY()][self.__snake.getX()] = None
                 print("Ops, Captain was caught by the Snake!")
-                flag1 = 1 
+                self.initSnake() 
             if flag == 0:
                 self.__field[self.__snake.getY()][self.__snake.getX()] = None
                 self.__snake.setX(newX)
-                if flag1 == 1:
-                    self.initSnake()
                 self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
 
         elif self.__snake.getX() < self.__cpt.getX():
@@ -347,12 +344,10 @@ class GameEngine:
                         self.__cpt.getV().pop(-1)
                 self.__field[self.__snake.getY()][self.__snake.getX()] = None
                 print("Ops, Captain was caught by the Snake!")
-                flag1 = 1
+                self.initSnake()
             if flag == 0:
                 self.__field[self.__snake.getY()][self.__snake.getX()] = None
                 self.__snake.setX(newX)
-                if flag1 == 1:
-                    self.initSnake()
                 self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
         else:
             # The vertical movement of the snake
@@ -376,12 +371,10 @@ class GameEngine:
                             self.__cpt.getV().pop(-1)
                     self.__field[self.__snake.getY()][self.__snake.getX()] = None
                     print("Ops, Captain was caught by the Snake!")
-                    flag1 = 1
+                    self.initSnake()
                 if flag == 0:
                     self.__field[self.__snake.getY()][self.__snake.getX()] = None
                     self.__snake.setY(newY)
-                    if flag1 == 1:
-                        self.initSnake()
                     self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
 
             elif self.__snake.getY() < self.__cpt.getY():
@@ -403,12 +396,10 @@ class GameEngine:
                             self.__cpt.getV().pop(-1)
                     self.__field[self.__snake.getY()][self.__snake.getX()] = None
                     print("Ops, Captain was caught by the Snake!")
-                    flag1 = 1
+                    self.initSnake()
                 if flag == 0:
                     self.__field[self.__snake.getY()][self.__snake.getX()] = None
                     self.__snake.setY(newY)
-                    if flag1 == 1:
-                        self.initSnake()
                     self.__field[self.__snake.getY()][self.__snake.getX()] = "S"
 
     def gameOver(self):
